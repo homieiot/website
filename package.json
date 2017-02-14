@@ -13,7 +13,7 @@
     "sass-loader": "^5.0.1",
     "vbuild": "^5.2.0",
     "vue": "2.1.5",
-    "vue-loader": "10.0.2",
+    "vue-loader": "^10.0.2",
     "vue-template-compiler": "2.1.5"
   }
 }
