@@ -8,6 +8,9 @@ build:
     - script:
         name: copy build to deployable
         code: cp -a ./dist/. $WERCKER_OUTPUT_DIR
+    - script:
+        name: add .nojekyll
+        code: touch $WERCKER_OUTPUT_DIR/.nojekyll
 
 github-pages:
   steps:
@@ -17,7 +20,7 @@ github-pages:
           git init
           git config --global user.name "wercker"
           git config --global user.email "pleasemailus@wercker.com"
-          git remote add origin git@github.com:homieiot/website.git
+          git remote add origin git@github.com:homieiot/homieiot.github.io.git
     - script:
         name: add everything to the repository
         code: |
