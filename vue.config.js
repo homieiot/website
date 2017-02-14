@@ -1,4 +1,7 @@
 module.exports = {
   title: 'Homie for the IoT',
-  resolve: true
+  resolve: true,
+  mergeConfig: {
+    performance: { hints: false }
+  }
 }
