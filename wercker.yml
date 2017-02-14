@@ -1,0 +1,35 @@
+box: node:7
+build:
+  steps:
+    - npm-install
+    - script:
+        name: build
+        code: npm run build
+    - script:
+        name: copy build to deployable
+        code: cp -a ./dist/. $WERCKER_OUTPUT_DIR
+
+github-pages:
+  steps:
+    - script:
+        name: initialize new repository
+        code: |
+          git init
+          git config --global user.name "wercker"
+          git config --global user.email "pleasemailus@wercker.com"
+          git remote add origin git@github.com:homieiot/website.git
+    - script:
+        name: add everything to the repository
+        code: |
+          git checkout gh-pages
+          git add .
+          git commit -m ":package: Result of deploy $WERCKER_GIT_COMMIT"
+    - add-to-known_hosts:
+        hostname: github.com
+        fingerprint: 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48
+    - add-ssh-key:
+        keyname: SSH
+    - script:
+        name: push to GitHub Pages
+        code: |
+          git push -f origin gh-pages
