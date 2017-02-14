@@ -21,7 +21,7 @@ github-pages:
     - script:
         name: add everything to the repository
         code: |
-          git checkout gh-pages
+          git checkout -b gh-pages
           git add .
           git commit -m ":package: Result of deploy $WERCKER_GIT_COMMIT"
     - add-to-known_hosts:
